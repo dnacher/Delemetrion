@@ -10,7 +10,7 @@ import principal.maquinaEstado.EstadoJuego;
 public class GestorJuego implements EstadoJuego {
 
     Mapa mapa = new Mapa("/Texto/prueba.dlm");
-    Jugador jugador = new Jugador(1, 1);
+    Jugador jugador = new Jugador(1, 1,mapa);
 
     @Override
     public void actualizar() {
