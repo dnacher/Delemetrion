@@ -17,6 +17,8 @@ public class Mapa {
     private final Sprite[] paleta;
     private final boolean[] colisiones;
     private final int[] sprites;
+    private final int MARGEN_X=Constantes.CENTRO_VENTANA_X - Constantes.MEDIO_LADO;
+    private final int MARGEN_Y=Constantes.CENTRO_VENTANA_Y - Constantes.MEDIO_LADO;
 
     public Mapa(final String ruta) {
 
@@ -127,23 +129,12 @@ public class Mapa {
     public void dibujar(final Graphics g, final int posicionX,
             final int posicionY) {
         for (int y = 0; y < this.alto; y++) {
-            for (int x = 0; x < this.ancho; x++) {
-	 int anchoSprite = Constantes.LADO_SPRITE;
-	 int altoSprite = anchoSprite;
-	 BufferedImage imagen = this.paleta[this.sprites[x + y
-	         * this.ancho]].getImagen();
-	 g.drawImage(imagen, x * anchoSprite - posicionX, y * altoSprite
-	         - posicionY, null);
+            for (int x = 0; x < this.ancho; x++) {	 
+            	BufferedImage imagen = this.paleta[this.sprites[x + y * this.ancho]].getImagen();
+            	int puntoX= x * Constantes.LADO_SPRITE - posicionX + MARGEN_X;            	
+            	int puntoY= y * Constantes.LADO_SPRITE - posicionY + MARGEN_Y;
+            	g.drawImage(imagen, puntoX, puntoY, null);
             }
         }
     }
 }
-
-/*
- * for (int x = 0; x < 33; x++) { for (int y = 0; y < 33; y++) {
- * g.drawImage(cargaBosque(hs), x * 32, y * 32, null); } } /*
- * g.drawImage(cargaDesierto(hs), 0, 0, null); g.drawImage(cargaTierra(hs), 0,
- * 32, null); g.drawImage(cargaBosque(hs), 0, 64, null);
- * g.drawImage(cargaAguaProfunda(hs), 0, 96, null); g.drawImage(cargaAgua(hs),
- * 0, 128, null);
- */

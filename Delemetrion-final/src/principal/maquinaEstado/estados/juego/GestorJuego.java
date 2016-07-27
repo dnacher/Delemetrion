@@ -1,5 +1,6 @@
 package principal.maquinaEstado.estados.juego;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 import principal.entes.Jugador;
@@ -20,8 +21,10 @@ public class GestorJuego implements EstadoJuego {
     public void dibujar(final Graphics g) {
         this.mapa.dibujar(g, (int) this.jugador.getPosicionX(),
 	 (int) this.jugador.getPosicionY());
+        g.setColor(Color.red);
         g.drawString("X: " + this.jugador.getPosicionX(), 2, 10);
         g.drawString("Y: " + this.jugador.getPosicionY(), 2, 20);
+     
         this.jugador.dibujar(g);
     }
 

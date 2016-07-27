@@ -24,8 +24,8 @@ public class GestorPrincipal {
 
     public static void main(final String[] args) {
         GestorPrincipal gp = new GestorPrincipal("Delemetrion", 640, 320);
-        Constantes.ANCHO_PANTALLA=640;
-        Constantes.ALTO_PANTALLA=320;
+        Constantes.ANCHO_VENTANA=640;
+        Constantes.ALTO_VENTANA=320;
         gp.iniciarJuego();
         gp.iniciarBuclePrincipal();
 

@@ -2,6 +2,7 @@ package principal.entes;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import principal.Constantes;
@@ -19,15 +20,17 @@ public class Jugador {
     private BufferedImage imagenActual;  
     private int animacion;
     private boolean enMovimiento=false;
-
+    private final Rectangle LIMITE_ARRIBA= new Rectangle(Constantes.CENTRO_VENTANA_X - 10 ,Constantes.CENTRO_VENTANA_Y + 6,23,1);
+    private final Rectangle LIMITE_ABAJO= new Rectangle(Constantes.CENTRO_VENTANA_X - 10 ,Constantes.CENTRO_VENTANA_Y + 13,23,1);
+    private final Rectangle LIMITE_DERECHA= new Rectangle(Constantes.CENTRO_VENTANA_X + 12 ,Constantes.CENTRO_VENTANA_Y - 13,1,25);
+    private final Rectangle LIMITE_IZQUIERDA= new Rectangle(Constantes.CENTRO_VENTANA_X - 10 ,Constantes.CENTRO_VENTANA_Y -13,1,25);
     public Jugador(final double posicionX, final double posicionY) {
         this.direccion = 'e';       
         this.posicionX = posicionX;
         this.posicionY = posicionY;
         x=posicionX;
         y=posicionY;
-        this.hs = new HojaSprite("/imagenes/hojasPersonajes/characters.png",
-	 Constantes.LADO_SPRITE, false);
+        this.hs = new HojaSprite("/imagenes/hojasPersonajes/characters.png",Constantes.LADO_SPRITE, false);
     }
 
     public void actualizar() {
@@ -124,13 +127,15 @@ public class Jugador {
      
      
     public void dibujar(final Graphics g) {
-        final int centroX = Constantes.ANCHO_PANTALLA / 2
-	 - Constantes.LADO_SPRITE / 2;
-        final int centroY = Constantes.ALTO_PANTALLA / 2
-	 - Constantes.LADO_SPRITE / 2;
-
-        g.setColor(Color.green);
+        final int centroX = Constantes.CENTRO_VENTANA_X - Constantes.LADO_SPRITE / 2;
+        final int centroY = Constantes.CENTRO_VENTANA_Y - Constantes.LADO_SPRITE / 2;
+                
         g.drawImage(this.imagenActual, centroX, centroY, null);
+        /*g.setColor(Color.red);
+        g.drawRect(LIMITE_ARRIBA.x, LIMITE_ARRIBA.y, LIMITE_ARRIBA.width, LIMITE_ARRIBA.height);
+        g.drawRect(LIMITE_ABAJO.x, LIMITE_ABAJO.y, LIMITE_ABAJO.width, LIMITE_ABAJO.height);
+        g.drawRect(LIMITE_DERECHA.x, LIMITE_DERECHA.y, LIMITE_DERECHA.width, LIMITE_DERECHA.height);
+        g.drawRect(LIMITE_IZQUIERDA.x, LIMITE_IZQUIERDA.y, LIMITE_IZQUIERDA.width, LIMITE_IZQUIERDA.height);*/
     }
 
     public void setPosicionX(final double posicionX) {
