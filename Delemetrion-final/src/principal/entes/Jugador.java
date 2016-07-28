@@ -53,7 +53,7 @@ public class Jugador {
             this.animacion = 0;
         }
     }
-    
+     
     public void desplazaMapa(){
     	y=posicionY;
     	x=posicionX;
